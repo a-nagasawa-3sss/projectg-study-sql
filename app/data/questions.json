@@ -1,0 +1,642 @@
+[
+  {
+    "id": 1,
+    "category": "SELECT基本",
+    "difficulty": "easy",
+    "question": "departmentsテーブルから、すべてのカラムを取得してください。",
+    "answer_sql": "SELECT * FROM departments;",
+    "tables": ["departments"]
+  },
+  {
+    "id": 2,
+    "category": "SELECT基本",
+    "difficulty": "easy",
+    "question": "employeesテーブルから、nameとsalaryの2カラムを取得してください。",
+    "answer_sql": "SELECT name, salary FROM employees;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 3,
+    "category": "WHERE",
+    "difficulty": "easy",
+    "question": "employeesテーブルから、salaryが450000以上の従業員のnameとsalaryを取得してください。",
+    "answer_sql": "SELECT name, salary FROM employees WHERE salary >= 450000;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 4,
+    "category": "WHERE",
+    "difficulty": "easy",
+    "question": "employeesテーブルから、department_idが2の従業員のnameとjob_titleを取得してください。",
+    "answer_sql": "SELECT name, job_title FROM employees WHERE department_id = 2;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 5,
+    "category": "ORDER BY",
+    "difficulty": "easy",
+    "question": "employeesテーブルから、nameとsalaryを取得し、salaryの降順で並べてください。",
+    "answer_sql": "SELECT name, salary FROM employees ORDER BY salary DESC;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 6,
+    "category": "集計関数",
+    "difficulty": "easy",
+    "question": "employeesテーブルの従業員数を取得してください。カラム名はCOUNT(*)のままで構いません。",
+    "answer_sql": "SELECT COUNT(*) FROM employees;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 7,
+    "category": "WHERE",
+    "difficulty": "easy",
+    "question": "productsテーブルから、categoryが'アクセサリ'の商品のproduct_nameとunit_priceを取得してください。",
+    "answer_sql": "SELECT product_name, unit_price FROM products WHERE category = 'アクセサリ';",
+    "tables": ["products"]
+  },
+  {
+    "id": 8,
+    "category": "WHERE",
+    "difficulty": "easy",
+    "question": "customersテーブルから、countryが'日本'の顧客のcustomer_nameとcityを取得してください。",
+    "answer_sql": "SELECT customer_name, city FROM customers WHERE country = '日本';",
+    "tables": ["customers"]
+  },
+  {
+    "id": 9,
+    "category": "集計関数",
+    "difficulty": "easy",
+    "question": "employeesテーブルから、salaryの最大値を取得してください。カラム名はMAX(salary)のままで構いません。",
+    "answer_sql": "SELECT MAX(salary) FROM employees;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 10,
+    "category": "集計関数",
+    "difficulty": "easy",
+    "question": "productsテーブルから、unit_priceの平均値を取得してください。カラム名はAVG(unit_price)のままで構いません。",
+    "answer_sql": "SELECT AVG(unit_price) FROM products;",
+    "tables": ["products"]
+  },
+  {
+    "id": 11,
+    "category": "JOIN",
+    "difficulty": "medium",
+    "question": "employeesとdepartmentsを結合し、各従業員のnameとdepartment_name（部署名）を取得してください。",
+    "answer_sql": "SELECT e.name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id;",
+    "tables": ["employees", "departments"]
+  },
+  {
+    "id": 12,
+    "category": "JOIN",
+    "difficulty": "medium",
+    "question": "ordersとcustomersを結合し、各注文のorder_id、order_date、customer_name（顧客名）を取得してください。",
+    "answer_sql": "SELECT o.order_id, o.order_date, c.customer_name FROM orders o JOIN customers c ON o.customer_id = c.customer_id;",
+    "tables": ["orders", "customers"]
+  },
+  {
+    "id": 13,
+    "category": "JOIN",
+    "difficulty": "medium",
+    "question": "order_itemsとproductsを結合し、各注文明細のorder_id、product_name（商品名）、quantityを取得してください。",
+    "answer_sql": "SELECT oi.order_id, p.product_name, oi.quantity FROM order_items oi JOIN products p ON oi.product_id = p.product_id;",
+    "tables": ["order_items", "products"]
+  },
+  {
+    "id": 14,
+    "category": "ORDER BY",
+    "difficulty": "medium",
+    "question": "projectsテーブルから、budgetが2000000以上のプロジェクトのproject_nameとbudgetを取得し、budgetの降順で並べてください。",
+    "answer_sql": "SELECT project_name, budget FROM projects WHERE budget >= 2000000 ORDER BY budget DESC;",
+    "tables": ["projects"]
+  },
+  {
+    "id": 15,
+    "category": "GROUP BY",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、department_idごとの従業員数を取得してください。カラムはdepartment_idと従業員数（COUNT(*)のままで構いません）にしてください。",
+    "answer_sql": "SELECT department_id, COUNT(*) FROM employees GROUP BY department_id;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 16,
+    "category": "GROUP BY",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、department_idごとの平均給与を取得してください。カラムはdepartment_idと平均給与（AVG(salary)のままで構いません）にしてください。",
+    "answer_sql": "SELECT department_id, AVG(salary) FROM employees GROUP BY department_id;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 17,
+    "category": "GROUP BY/HAVING",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、所属する従業員数が3人以上のdepartment_idを、その人数（COUNT(*)のままで構いません）とともに取得してください。",
+    "answer_sql": "SELECT department_id, COUNT(*) FROM employees GROUP BY department_id HAVING COUNT(*) >= 3;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 18,
+    "category": "JOIN/GROUP BY",
+    "difficulty": "medium",
+    "question": "customersとordersを結合し、各顧客（customer_name）ごとの注文件数を取得してください。注文が0件の顧客は結果に含めなくて構いません。カラムはcustomer_nameと注文件数（COUNT(*)のままで構いません）にしてください。",
+    "answer_sql": "SELECT c.customer_name, COUNT(*) FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_name;",
+    "tables": ["customers", "orders"]
+  },
+  {
+    "id": 19,
+    "category": "集計関数",
+    "difficulty": "medium",
+    "question": "ordersテーブルから、statusが'completed'の注文件数を取得してください。カラム名はCOUNT(*)のままで構いません。",
+    "answer_sql": "SELECT COUNT(*) FROM orders WHERE status = 'completed';",
+    "tables": ["orders"]
+  },
+  {
+    "id": 20,
+    "category": "WHERE",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、hire_dateが'2020-01-01'以降の従業員のnameとhire_dateを取得してください。",
+    "answer_sql": "SELECT name, hire_date FROM employees WHERE hire_date >= '2020-01-01';",
+    "tables": ["employees"]
+  },
+  {
+    "id": 21,
+    "category": "WHERE/NULL",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、manager_idがNULLである従業員（部長）のnameとdepartment_idを取得してください。",
+    "answer_sql": "SELECT name, department_id FROM employees WHERE manager_id IS NULL;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 22,
+    "category": "JOIN/WHERE",
+    "difficulty": "medium",
+    "question": "ordersとcustomersを結合し、statusが'cancelled'の注文のorder_idとcustomer_name（顧客名）を取得してください。",
+    "answer_sql": "SELECT o.order_id, c.customer_name FROM orders o JOIN customers c ON o.customer_id = c.customer_id WHERE o.status = 'cancelled';",
+    "tables": ["orders", "customers"]
+  },
+  {
+    "id": 23,
+    "category": "DISTINCT",
+    "difficulty": "medium",
+    "question": "productsテーブルから、categoryの一覧を重複なしで取得してください。",
+    "answer_sql": "SELECT DISTINCT category FROM products;",
+    "tables": ["products"]
+  },
+  {
+    "id": 24,
+    "category": "WHERE/LIKE",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、job_titleに'エンジニア'を含む従業員のnameとjob_titleを取得してください。",
+    "answer_sql": "SELECT name, job_title FROM employees WHERE job_title LIKE '%エンジニア%';",
+    "tables": ["employees"]
+  },
+  {
+    "id": 25,
+    "category": "WHERE/BETWEEN",
+    "difficulty": "medium",
+    "question": "productsテーブルから、unit_priceが5000以上20000以下の商品のproduct_nameとunit_priceを取得し、unit_priceの昇順で並べてください。",
+    "answer_sql": "SELECT product_name, unit_price FROM products WHERE unit_price BETWEEN 5000 AND 20000 ORDER BY unit_price;",
+    "tables": ["products"]
+  },
+  {
+    "id": 26,
+    "category": "WHERE/IN",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、department_idが1または2の従業員のnameとdepartment_idを取得してください。",
+    "answer_sql": "SELECT name, department_id FROM employees WHERE department_id IN (1, 2);",
+    "tables": ["employees"]
+  },
+  {
+    "id": 27,
+    "category": "WHERE/BETWEEN",
+    "difficulty": "medium",
+    "question": "ordersテーブルから、order_dateが'2023-04-01'から'2023-06-30'までの注文のorder_idとorder_dateを取得してください。",
+    "answer_sql": "SELECT order_id, order_date FROM orders WHERE order_date BETWEEN '2023-04-01' AND '2023-06-30';",
+    "tables": ["orders"]
+  },
+  {
+    "id": 28,
+    "category": "CASE",
+    "difficulty": "medium",
+    "question": "employeesテーブルから、name、salaryに加えて、salaryが500000以上であれば'管理職クラス'、それ以外は'一般'と表示するカラム（salary_classという別名）を取得してください。",
+    "answer_sql": "SELECT name, salary, CASE WHEN salary >= 500000 THEN '管理職クラス' ELSE '一般' END AS salary_class FROM employees;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 29,
+    "category": "LEFT JOIN/GROUP BY",
+    "difficulty": "medium",
+    "question": "customersとordersをLEFT JOINで結合し、すべての顧客についてcustomer_nameごとの注文件数を取得してください。注文が0件の顧客も結果に含め、件数は0としてください。カラムはcustomer_nameと注文件数（COUNT(o.order_id)のままで構いません）にしてください。",
+    "answer_sql": "SELECT c.customer_name, COUNT(o.order_id) FROM customers c LEFT JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_name;",
+    "tables": ["customers", "orders"]
+  },
+  {
+    "id": 30,
+    "category": "GROUP BY/関数",
+    "difficulty": "medium",
+    "question": "productsテーブルから、categoryごとの平均単価を取得し、小数点以下を四捨五入してください。カラムはcategoryと平均単価（ROUND(AVG(unit_price), 0)のままで構いません）にしてください。",
+    "answer_sql": "SELECT category, ROUND(AVG(unit_price), 0) FROM products GROUP BY category;",
+    "tables": ["products"]
+  },
+  {
+    "id": 31,
+    "category": "サブクエリ",
+    "difficulty": "hard",
+    "question": "employeesテーブルから、全従業員の平均salaryより高いsalaryを持つ従業員のnameとsalaryを取得してください。",
+    "answer_sql": "SELECT name, salary FROM employees WHERE salary > (SELECT AVG(salary) FROM employees);",
+    "tables": ["employees"]
+  },
+  {
+    "id": 32,
+    "category": "サブクエリ",
+    "difficulty": "hard",
+    "question": "employeesテーブルから、salaryが最も高い従業員のnameとsalaryを取得してください。",
+    "answer_sql": "SELECT name, salary FROM employees WHERE salary = (SELECT MAX(salary) FROM employees);",
+    "tables": ["employees"]
+  },
+  {
+    "id": 33,
+    "category": "サブクエリ/LEFT JOIN",
+    "difficulty": "hard",
+    "question": "customersテーブルから、一度も注文（orders）をしていない顧客のcustomer_nameを取得してください。",
+    "answer_sql": "SELECT customer_name FROM customers WHERE customer_id NOT IN (SELECT customer_id FROM orders);",
+    "tables": ["customers", "orders"]
+  },
+  {
+    "id": 34,
+    "category": "JOIN/GROUP BY",
+    "difficulty": "hard",
+    "question": "employee_projectsとprojectsを結合し、project_nameごとのhours_worked（作業時間）の合計を取得してください。カラムはproject_nameと合計時間（SUM(hours_worked)のままで構いません）にしてください。",
+    "answer_sql": "SELECT p.project_name, SUM(ep.hours_worked) FROM employee_projects ep JOIN projects p ON ep.project_id = p.project_id GROUP BY p.project_name;",
+    "tables": ["employee_projects", "projects"]
+  },
+  {
+    "id": 35,
+    "category": "GROUP BY",
+    "difficulty": "hard",
+    "question": "employee_projectsテーブルから、employee_idごとに参加しているプロジェクト数を取得してください。カラムはemployee_idと件数（COUNT(*)のままで構いません）にしてください。",
+    "answer_sql": "SELECT employee_id, COUNT(*) FROM employee_projects GROUP BY employee_id;",
+    "tables": ["employee_projects"]
+  },
+  {
+    "id": 36,
+    "category": "JOIN/GROUP BY",
+    "difficulty": "hard",
+    "question": "order_itemsとproductsを結合し、product_nameごとのquantity（販売数量）の合計を取得してください。カラムはproduct_nameと合計数量（SUM(quantity)のままで構いません）にしてください。",
+    "answer_sql": "SELECT p.product_name, SUM(oi.quantity) FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_name;",
+    "tables": ["order_items", "products"]
+  },
+  {
+    "id": 37,
+    "category": "GROUP BY",
+    "difficulty": "hard",
+    "question": "productsテーブルから、categoryごとの商品数と平均単価を取得してください。カラムはcategory、商品数（COUNT(*)のままで構いません）、平均単価（AVG(unit_price)のままで構いません）にしてください。",
+    "answer_sql": "SELECT category, COUNT(*), AVG(unit_price) FROM products GROUP BY category;",
+    "tables": ["products"]
+  },
+  {
+    "id": 38,
+    "category": "JOIN/WHERE",
+    "difficulty": "hard",
+    "question": "employeesとdepartmentsを結合し、locationが'東京'である部署に所属する従業員のnameとdepartment_nameを取得してください。",
+    "answer_sql": "SELECT e.name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id WHERE d.location = '東京';",
+    "tables": ["employees", "departments"]
+  },
+  {
+    "id": 39,
+    "category": "自己結合",
+    "difficulty": "hard",
+    "question": "employeesテーブルを自己結合して、各従業員のnameと、その上司（manager）のname（manager_nameという別名）を取得してください。上司がいない従業員はmanager_nameをNULLとして結果に含めてください。",
+    "answer_sql": "SELECT e.name, m.name AS manager_name FROM employees e LEFT JOIN employees m ON e.manager_id = m.employee_id;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 40,
+    "category": "サブクエリ/NOT EXISTS",
+    "difficulty": "hard",
+    "question": "customersテーブルから、NOT EXISTSを使って、一度も注文（orders）をしていない顧客のcustomer_nameを取得してください。",
+    "answer_sql": "SELECT customer_name FROM customers c WHERE NOT EXISTS (SELECT 1 FROM orders o WHERE o.customer_id = c.customer_id);",
+    "tables": ["customers", "orders"]
+  },
+  {
+    "id": 41,
+    "category": "サブクエリ（相関）",
+    "difficulty": "hard",
+    "question": "employeesテーブルから、自分が所属する部署（department_id）の平均給与より高いsalaryを持つ従業員のname、department_id、salaryを取得してください。",
+    "answer_sql": "SELECT e.name, e.department_id, e.salary FROM employees e WHERE e.salary > (SELECT AVG(e2.salary) FROM employees e2 WHERE e2.department_id = e.department_id);",
+    "tables": ["employees"]
+  },
+  {
+    "id": 42,
+    "category": "ウィンドウ関数",
+    "difficulty": "hard",
+    "question": "employeesテーブルから、department_idごとにsalaryが高い順の順位を付け、department_id、name、salaryと順位（salary_rankという別名）を取得してください。",
+    "answer_sql": "SELECT department_id, name, salary, RANK() OVER (PARTITION BY department_id ORDER BY salary DESC) AS salary_rank FROM employees;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 43,
+    "category": "JOIN/GROUP BY",
+    "difficulty": "hard",
+    "question": "order_itemsとproductsを結合し、order_idごとの注文金額合計（quantity × unit_price の合計）を取得してください。カラムはorder_idと合計金額（SUM(oi.quantity * p.unit_price)のままで構いません）にしてください。",
+    "answer_sql": "SELECT oi.order_id, SUM(oi.quantity * p.unit_price) FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY oi.order_id;",
+    "tables": ["order_items", "products"]
+  },
+  {
+    "id": 44,
+    "category": "JOIN/GROUP BY/HAVING",
+    "difficulty": "hard",
+    "question": "employeesとdepartmentsを結合し、department_nameごとの給与総額が1800000以上の部署のdepartment_nameと給与総額を取得してください。カラムはdepartment_nameと給与総額（SUM(e.salary)のままで構いません）にしてください。",
+    "answer_sql": "SELECT d.department_name, SUM(e.salary) FROM employees e JOIN departments d ON e.department_id = d.department_id GROUP BY d.department_name HAVING SUM(e.salary) >= 1800000;",
+    "tables": ["employees", "departments"]
+  },
+  {
+    "id": 45,
+    "category": "サブクエリ（相関）",
+    "difficulty": "hard",
+    "question": "employeesテーブルから、各従業員のname、salaryと、所属部署の平均給与とのsalaryの差（salary - 部署の平均salary）を取得してください。差のカラム名はsalary_diffとしてください。",
+    "answer_sql": "SELECT e.name, e.salary, e.salary - (SELECT AVG(e2.salary) FROM employees e2 WHERE e2.department_id = e.department_id) AS salary_diff FROM employees e;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 46,
+    "category": "UNION",
+    "difficulty": "hard",
+    "question": "次の2つの結果をUNIONで1つにまとめてください。①employeesテーブルからsalaryが600000以上の従業員のname　②productsテーブルからunit_priceが100000以上の商品のproduct_name。結果のカラム名はnameのままで構いません。",
+    "answer_sql": "SELECT name FROM employees WHERE salary >= 600000 UNION SELECT product_name FROM products WHERE unit_price >= 100000;",
+    "tables": ["employees", "products"]
+  },
+  {
+    "id": 47,
+    "category": "複数JOIN/GROUP BY/HAVING",
+    "difficulty": "hard",
+    "question": "customers、orders、order_items、productsを結合し、customer_nameごとの購入総額（quantity × unit_price の合計）が100000以上の顧客のcustomer_nameと購入総額を取得してください。カラムはcustomer_nameと購入総額（SUM(oi.quantity * p.unit_price)のままで構いません）にしてください。",
+    "answer_sql": "SELECT c.customer_name, SUM(oi.quantity * p.unit_price) FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_name HAVING SUM(oi.quantity * p.unit_price) >= 100000;",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 48,
+    "category": "GROUP BY/HAVING",
+    "difficulty": "hard",
+    "question": "employee_projectsテーブルから、2件以上のプロジェクトに参加している従業員のemployee_idと参加件数を取得してください。カラムはemployee_idと件数（COUNT(*)のままで構いません）にしてください。",
+    "answer_sql": "SELECT employee_id, COUNT(*) FROM employee_projects GROUP BY employee_id HAVING COUNT(*) >= 2;",
+    "tables": ["employee_projects"]
+  },
+  {
+    "id": 49,
+    "category": "JOIN/GROUP BY/ORDER BY",
+    "difficulty": "hard",
+    "question": "order_itemsとproductsを結合し、product_nameごとの販売数量（quantityの合計）が多い順に上位3件を取得してください。カラムはproduct_nameと合計数量（SUM(oi.quantity)のままで構いません）にしてください。",
+    "answer_sql": "SELECT p.product_name, SUM(oi.quantity) FROM order_items oi JOIN products p ON oi.product_id = p.product_id GROUP BY p.product_name ORDER BY SUM(oi.quantity) DESC LIMIT 3;",
+    "tables": ["order_items", "products"]
+  },
+  {
+    "id": 50,
+    "category": "JOIN/GROUP BY/ORDER BY",
+    "difficulty": "hard",
+    "question": "employeesとdepartmentsを結合し、department_idごとの平均給与が最も高い部署のdepartment_nameと平均給与を取得してください。カラムはdepartment_nameと平均給与（AVG(e.salary)のままで構いません）にしてください。",
+    "answer_sql": "SELECT d.department_name, AVG(e.salary) FROM employees e JOIN departments d ON e.department_id = d.department_id GROUP BY d.department_name ORDER BY AVG(e.salary) DESC LIMIT 1;",
+    "tables": ["employees", "departments"]
+  },
+  {
+    "id": 51,
+    "category": "複数JOIN/GROUP BY/ORDER BY",
+    "difficulty": "hard",
+    "question": "customers、orders、order_items、productsを結合し、customer_nameごとの購入総額（quantity × unit_price の合計）が多い順に上位3件を取得してください。カラムはcustomer_nameと購入総額（SUM(oi.quantity * p.unit_price)のままで構いません）にしてください。",
+    "answer_sql": "SELECT c.customer_name, SUM(oi.quantity * p.unit_price) FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_name ORDER BY SUM(oi.quantity * p.unit_price) DESC LIMIT 3;",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 52,
+    "category": "サブクエリ",
+    "difficulty": "hard",
+    "question": "productsテーブルから、order_itemsに一度も登場しない商品のproduct_nameを取得してください。",
+    "answer_sql": "SELECT product_name FROM products WHERE product_id NOT IN (SELECT product_id FROM order_items);",
+    "tables": ["products", "order_items"]
+  },
+  {
+    "id": 53,
+    "category": "JOIN/GROUP BY/HAVING",
+    "difficulty": "hard",
+    "question": "employee_projectsとemployeesを結合し、employee_idごとの合計作業時間（hours_workedの合計）が200時間を超える従業員のnameと合計作業時間を取得してください。カラムはnameと合計作業時間（SUM(ep.hours_worked)のままで構いません）にしてください。",
+    "answer_sql": "SELECT e.name, SUM(ep.hours_worked) FROM employee_projects ep JOIN employees e ON ep.employee_id = e.employee_id GROUP BY e.name HAVING SUM(ep.hours_worked) > 200;",
+    "tables": ["employee_projects", "employees"]
+  },
+  {
+    "id": 54,
+    "category": "JOIN/GROUP BY",
+    "difficulty": "hard",
+    "question": "departmentsとprojectsを結合し、department_nameごとのプロジェクト予算合計（budgetの合計）を取得してください。カラムはdepartment_nameと予算合計（SUM(p.budget)のままで構いません）にしてください。",
+    "answer_sql": "SELECT d.department_name, SUM(p.budget) FROM departments d JOIN projects p ON d.department_id = p.department_id GROUP BY d.department_name;",
+    "tables": ["departments", "projects"]
+  },
+  {
+    "id": 55,
+    "category": "自己結合/GROUP BY",
+    "difficulty": "hard",
+    "question": "employeesテーブルを自己結合し、各部長（manager_idで参照されている従業員）のnameと、その部長に属する部下の人数を取得してください。カラムはnameと部下人数（COUNT(*)のままで構いません）にしてください。",
+    "answer_sql": "SELECT m.name, COUNT(*) FROM employees e JOIN employees m ON e.manager_id = m.employee_id GROUP BY m.name;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 56,
+    "category": "CASE/GROUP BY",
+    "difficulty": "hard",
+    "question": "employeesテーブルから、salaryを次の基準で分類し、分類ごとの人数を取得してください。\n- 500000以上: '高'\n- 400000以上500000未満: '中'\n- 400000未満: '低'\nカラムは分類（salary_bandという別名）と人数（COUNT(*)のままで構いません）にしてください。",
+    "answer_sql": "SELECT CASE WHEN salary >= 500000 THEN '高' WHEN salary >= 400000 THEN '中' ELSE '低' END AS salary_band, COUNT(*) FROM employees GROUP BY salary_band;",
+    "tables": ["employees"]
+  },
+  {
+    "id": 57,
+    "category": "JOIN/GROUP BY",
+    "difficulty": "hard",
+    "question": "customersとordersを結合し、customer_nameごとの最初の注文日（order_dateの最小値）を取得してください。カラムはcustomer_nameと最初の注文日（MIN(o.order_date)のままで構いません）にしてください。",
+    "answer_sql": "SELECT c.customer_name, MIN(o.order_date) FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_name;",
+    "tables": ["customers", "orders"]
+  },
+  {
+    "id": 58,
+    "category": "JOIN/GROUP BY/HAVING",
+    "difficulty": "hard",
+    "question": "departmentsとprojectsを結合し、プロジェクト数が2件以上の部署のdepartment_nameとプロジェクト数を取得してください。カラムはdepartment_nameとプロジェクト数（COUNT(*)のままで構いません）にしてください。",
+    "answer_sql": "SELECT d.department_name, COUNT(*) FROM departments d JOIN projects p ON d.department_id = p.department_id GROUP BY d.department_name HAVING COUNT(*) >= 2;",
+    "tables": ["departments", "projects"]
+  },
+  {
+    "id": 59,
+    "category": "ウィンドウ関数",
+    "difficulty": "hard",
+    "question": "productsテーブルから、categoryごとにunit_priceが高い順の順位を付け、category、product_name、unit_priceと順位（price_rankという別名）を取得してください。",
+    "answer_sql": "SELECT category, product_name, unit_price, RANK() OVER (PARTITION BY category ORDER BY unit_price DESC) AS price_rank FROM products;",
+    "tables": ["products"]
+  },
+  {
+    "id": 60,
+    "category": "サブクエリ/GROUP BY/HAVING",
+    "difficulty": "hard",
+    "question": "customersとordersを結合し、注文件数が最も多い顧客のcustomer_nameと注文件数を取得してください。カラムはcustomer_nameと注文件数（COUNT(*)のままで構いません）にしてください。同数で最多の顧客が複数いる場合は、その全員を含めてください。",
+    "answer_sql": "SELECT c.customer_name, COUNT(*) FROM customers c JOIN orders o ON c.customer_id = o.customer_id GROUP BY c.customer_name HAVING COUNT(*) = (SELECT MAX(cnt) FROM (SELECT COUNT(*) AS cnt FROM orders GROUP BY customer_id));",
+    "tables": ["customers", "orders"]
+  },
+  {
+    "id": 61,
+    "category": "複数JOIN",
+    "difficulty": "very-hard",
+    "question": "employees、departments、employee_projects、projectsの4テーブルを結合し、プロジェクトに参加している従業員のname、department_name、project_name、role（プロジェクト内での役割）を取得してください。",
+    "answer_sql": "SELECT e.name, d.department_name, p.project_name, ep.role FROM employees e JOIN departments d ON e.department_id = d.department_id JOIN employee_projects ep ON e.employee_id = ep.employee_id JOIN projects p ON ep.project_id = p.project_id;",
+    "tables": ["employees", "departments", "employee_projects", "projects"]
+  },
+  {
+    "id": 62,
+    "category": "複数JOIN/DISTINCT",
+    "difficulty": "very-hard",
+    "question": "customers、orders、order_items、productsの4テーブルを結合し、各顧客が購入した商品の一覧を、customer_nameとproduct_nameの組み合わせで重複なく取得してください。customer_nameの昇順で並べてください。",
+    "answer_sql": "SELECT DISTINCT c.customer_name, p.product_name FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id ORDER BY c.customer_name;",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 63,
+    "category": "複数JOIN/GROUP BY",
+    "difficulty": "very-hard",
+    "question": "departments、employees、employee_projectsの3テーブルを結合し、department_nameごとの全プロジェクトの作業時間合計（hours_workedの合計）を取得してください。カラムはdepartment_nameと合計時間（SUM(ep.hours_worked)のままで構いません）にしてください。",
+    "answer_sql": "SELECT d.department_name, SUM(ep.hours_worked) FROM departments d JOIN employees e ON d.department_id = e.department_id JOIN employee_projects ep ON e.employee_id = ep.employee_id GROUP BY d.department_name;",
+    "tables": ["departments", "employees", "employee_projects"]
+  },
+  {
+    "id": 64,
+    "category": "相関サブクエリ/JOIN",
+    "difficulty": "very-hard",
+    "question": "employeesとdepartmentsを結合し、各部署で最も給与が高い従業員のname、department_name、salaryを取得してください。",
+    "answer_sql": "SELECT e.name, d.department_name, e.salary FROM employees e JOIN departments d ON e.department_id = d.department_id WHERE e.salary = (SELECT MAX(e2.salary) FROM employees e2 WHERE e2.department_id = e.department_id);",
+    "tables": ["employees", "departments"]
+  },
+  {
+    "id": 65,
+    "category": "CTE/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "WITH句を使い、customers、orders、order_items、productsを結合してcustomer_nameごとの購入総額（quantity × unit_price の合計）を計算したうえで、全顧客の平均購入総額より購入総額が高い顧客のcustomer_nameと購入総額（total_amountという別名）を取得してください。",
+    "answer_sql": "WITH customer_totals AS (SELECT c.customer_name AS customer_name, SUM(oi.quantity * p.unit_price) AS total_amount FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_name) SELECT customer_name, total_amount FROM customer_totals WHERE total_amount > (SELECT AVG(total_amount) FROM customer_totals);",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 66,
+    "category": "複数JOIN/DISTINCT",
+    "difficulty": "very-hard",
+    "question": "departments、employees、employee_projects、projectsの4テーブルを結合し、各部署の従業員が参加しているプロジェクト名の一覧を、department_nameとproject_nameの組み合わせで重複なく取得してください。department_name、project_nameの昇順で並べてください。",
+    "answer_sql": "SELECT DISTINCT d.department_name, p.project_name FROM departments d JOIN employees e ON d.department_id = e.department_id JOIN employee_projects ep ON e.employee_id = ep.employee_id JOIN projects p ON ep.project_id = p.project_id ORDER BY d.department_name, p.project_name;",
+    "tables": ["departments", "employees", "employee_projects", "projects"]
+  },
+  {
+    "id": 67,
+    "category": "ウィンドウ関数/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "customers、orders、order_items、productsを結合し、各顧客について購入数量（quantityの合計）が最も多い商品を取得してください。カラムはcustomer_name、product_name、購入数量（total_quantityという別名）としてください。同数で1位が複数ある場合はすべて含めてください。",
+    "answer_sql": "SELECT customer_name, product_name, total_quantity FROM (SELECT c.customer_name AS customer_name, p.product_name AS product_name, SUM(oi.quantity) AS total_quantity, RANK() OVER (PARTITION BY c.customer_name ORDER BY SUM(oi.quantity) DESC) AS rnk FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_name, p.product_name) WHERE rnk = 1;",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 68,
+    "category": "相関サブクエリ/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "employees、employee_projects、projectsを結合し、各従業員が参加しているプロジェクトの中でbudgetが最も大きいプロジェクトについて、従業員のname、project_name、budgetを取得してください。",
+    "answer_sql": "SELECT e.name, p.project_name, p.budget FROM employees e JOIN employee_projects ep ON e.employee_id = ep.employee_id JOIN projects p ON ep.project_id = p.project_id WHERE p.budget = (SELECT MAX(p2.budget) FROM employee_projects ep2 JOIN projects p2 ON ep2.project_id = p2.project_id WHERE ep2.employee_id = e.employee_id);",
+    "tables": ["employees", "employee_projects", "projects"]
+  },
+  {
+    "id": 69,
+    "category": "相関サブクエリ",
+    "difficulty": "very-hard",
+    "question": "departmentsテーブルから、各部署のdepartment_name、その部署に所属する従業員数（employee_countという別名）、その部署が持つプロジェクト数（project_countという別名）を、サブクエリを使って取得してください。",
+    "answer_sql": "SELECT d.department_name, (SELECT COUNT(*) FROM employees e WHERE e.department_id = d.department_id) AS employee_count, (SELECT COUNT(*) FROM projects p WHERE p.department_id = d.department_id) AS project_count FROM departments d;",
+    "tables": ["departments", "employees", "projects"]
+  },
+  {
+    "id": 70,
+    "category": "複数JOIN/WHERE",
+    "difficulty": "very-hard",
+    "question": "employees、employee_projects、projects、departmentsの4テーブルを結合し、locationが'東京'である部署が実施するプロジェクトに参加している従業員について、name、project_name、role、location（部署の所在地）を取得してください。",
+    "answer_sql": "SELECT e.name, p.project_name, ep.role, d.location FROM employees e JOIN employee_projects ep ON e.employee_id = ep.employee_id JOIN projects p ON ep.project_id = p.project_id JOIN departments d ON p.department_id = d.department_id WHERE d.location = '東京';",
+    "tables": ["employees", "employee_projects", "projects", "departments"]
+  },
+  {
+    "id": 71,
+    "category": "相関サブクエリ/JOIN",
+    "difficulty": "very-hard",
+    "question": "employeesとdepartmentsを結合し、部署の平均給与が全社平均給与より高い部署に所属する従業員のname、department_nameを取得してください。",
+    "answer_sql": "SELECT e.name, d.department_name FROM employees e JOIN departments d ON e.department_id = d.department_id WHERE (SELECT AVG(e2.salary) FROM employees e2 WHERE e2.department_id = e.department_id) > (SELECT AVG(salary) FROM employees);",
+    "tables": ["employees", "departments"]
+  },
+  {
+    "id": 72,
+    "category": "ウィンドウ関数/JOIN",
+    "difficulty": "very-hard",
+    "question": "employeesとdepartmentsを結合し、各部署で給与が2番目に高い従業員のname、department_name、salaryを取得してください。",
+    "answer_sql": "SELECT name, department_name, salary FROM (SELECT e.name AS name, d.department_name AS department_name, e.salary AS salary, RANK() OVER (PARTITION BY e.department_id ORDER BY e.salary DESC) AS rnk FROM employees e JOIN departments d ON e.department_id = d.department_id) WHERE rnk = 2;",
+    "tables": ["employees", "departments"]
+  },
+  {
+    "id": 73,
+    "category": "相関サブクエリ/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "customers、orders、order_items、productsを結合し、各顧客が購入した商品の中で単価（unit_price）が最も高い商品について、customer_name、product_name、unit_priceを取得してください。",
+    "answer_sql": "SELECT DISTINCT c.customer_name, p.product_name, p.unit_price FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id WHERE p.unit_price = (SELECT MAX(p2.unit_price) FROM orders o2 JOIN order_items oi2 ON o2.order_id = oi2.order_id JOIN products p2 ON oi2.product_id = p2.product_id WHERE o2.customer_id = c.customer_id);",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 74,
+    "category": "CTE/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "WITH句を使い、departmentsとprojectsを結合してdepartment_nameごとのプロジェクト予算合計（total_budgetという別名）を計算したうえで、全プロジェクトの予算合計に対する各部署の割合（パーセント、小数点第1位まで四捨五入、budget_percentageという別名）を取得してください。",
+    "answer_sql": "WITH dept_budget AS (SELECT d.department_name AS department_name, SUM(p.budget) AS total_budget FROM departments d JOIN projects p ON d.department_id = p.department_id GROUP BY d.department_name) SELECT department_name, total_budget, ROUND(total_budget * 100.0 / (SELECT SUM(budget) FROM projects), 1) AS budget_percentage FROM dept_budget;",
+    "tables": ["departments", "projects"]
+  },
+  {
+    "id": 75,
+    "category": "自己結合/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "employee_projectsを自己結合し、同じプロジェクトに参加している従業員のペアをemployeesと結合して取得してください。カラムはemployee1（1人目のname）、employee2（2人目のname）、project_nameとし、同じペアが重複しないようにしてください。",
+    "answer_sql": "SELECT e1.name AS employee1, e2.name AS employee2, p.project_name FROM employee_projects ep1 JOIN employee_projects ep2 ON ep1.project_id = ep2.project_id AND ep1.employee_id < ep2.employee_id JOIN employees e1 ON ep1.employee_id = e1.employee_id JOIN employees e2 ON ep2.employee_id = e2.employee_id JOIN projects p ON ep1.project_id = p.project_id;",
+    "tables": ["employee_projects", "employees", "projects"]
+  },
+  {
+    "id": 76,
+    "category": "複数JOIN/GROUP BY/HAVING",
+    "difficulty": "very-hard",
+    "question": "orders、order_items、productsを結合し、order_idごとに含まれる商品カテゴリ数（categoryの重複なし件数）が2以上の注文について、order_idとカテゴリ数（category_countという別名）を取得してください。",
+    "answer_sql": "SELECT o.order_id, COUNT(DISTINCT p.category) AS category_count FROM orders o JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY o.order_id HAVING COUNT(DISTINCT p.category) >= 2;",
+    "tables": ["orders", "order_items", "products"]
+  },
+  {
+    "id": 77,
+    "category": "ウィンドウ関数/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "customers、orders、order_items、productsを結合してcustomer_nameごとの購入総額（total_amountという別名）を計算し、購入総額が多い順の順位（amount_rankという別名）を付けて、customer_name、total_amount、amount_rankを取得してください。",
+    "answer_sql": "SELECT customer_name, total_amount, RANK() OVER (ORDER BY total_amount DESC) AS amount_rank FROM (SELECT c.customer_name AS customer_name, SUM(oi.quantity * p.unit_price) AS total_amount FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_name);",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 78,
+    "category": "複数JOIN/GROUP BY",
+    "difficulty": "very-hard",
+    "question": "departments、projects、employee_projectsを結合し、department_nameごとに、その部署のプロジェクトに参加した従業員の人数（重複を除く）を取得してください。カラムはdepartment_nameと人数（employee_countという別名）にしてください。",
+    "answer_sql": "SELECT d.department_name, COUNT(DISTINCT ep.employee_id) AS employee_count FROM departments d JOIN projects p ON d.department_id = p.department_id JOIN employee_projects ep ON p.project_id = ep.project_id GROUP BY d.department_name;",
+    "tables": ["departments", "projects", "employee_projects"]
+  },
+  {
+    "id": 79,
+    "category": "相関サブクエリ/CTE/複数JOIN",
+    "difficulty": "very-hard",
+    "question": "WITH句を使い、customers、orders、order_items、productsを結合して顧客ごとの購入総額（total_amountという別名）を計算したうえで、自分の国（country）の平均購入総額より購入総額が高い顧客のcustomer_name、country、total_amountを取得してください。",
+    "answer_sql": "WITH customer_totals AS (SELECT c.customer_id AS customer_id, c.customer_name AS customer_name, c.country AS country, SUM(oi.quantity * p.unit_price) AS total_amount FROM customers c JOIN orders o ON c.customer_id = o.customer_id JOIN order_items oi ON o.order_id = oi.order_id JOIN products p ON oi.product_id = p.product_id GROUP BY c.customer_id) SELECT customer_name, country, total_amount FROM customer_totals ct WHERE total_amount > (SELECT AVG(total_amount) FROM customer_totals ct2 WHERE ct2.country = ct.country);",
+    "tables": ["customers", "orders", "order_items", "products"]
+  },
+  {
+    "id": 80,
+    "category": "複数JOIN/GROUP BY",
+    "difficulty": "very-hard",
+    "question": "projects、departments、employee_projectsを結合し、project_nameごとに、所属部署名（department_name）、参加人数（member_countという別名）、合計作業時間（total_hoursという別名）を取得してください。",
+    "answer_sql": "SELECT d.department_name, p.project_name, COUNT(ep.employee_id) AS member_count, SUM(ep.hours_worked) AS total_hours FROM projects p JOIN departments d ON p.department_id = d.department_id JOIN employee_projects ep ON p.project_id = ep.project_id GROUP BY p.project_name;",
+    "tables": ["projects", "departments", "employee_projects"]
+  }
+]

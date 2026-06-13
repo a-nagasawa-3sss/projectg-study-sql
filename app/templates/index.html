@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>study-sql</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>study-sql</h1>
+    <p>SQLの練習問題集です。問題に対してSQLを記述し、実行結果が正解と一致するかを判定します。<br>
+    不正解の場合は、Gemini APIを使ってAIがヒントを表示します。</p>
+
+    <div class="card">
+      <h2>このアプリの使い方</h2>
+      <ol>
+        <li>「練習を始める」から難易度（easy / medium / hard / very-hard）を選びます。</li>
+        <li>「問題を取得」ボタンを押すと、その難易度の問題がランダムに1問表示されます。</li>
+        <li>問題文と関連するテーブルのデータを確認しながら、回答SQLを入力します。</li>
+        <li>「回答する」ボタンを押すと、SQLの実行結果が表示され、正解と比較されます。</li>
+        <li>不正解の場合はAI（Gemini）によるヒントが表示されます。</li>
+        <li>「問題を取得」を再度押すと、次の問題に進めます。</li>
+      </ol>
+    </div>
+
+    <div class="card">
+      <h2>Gemini APIキーについて</h2>
+      <p>
+        不正解時のAIヒント表示には、各自のGemini APIキーが必要です（無料枠があります）。<br>
+        <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>
+        にGoogleアカウントでログインし、APIキーを発行してください。
+      </p>
+      <p>
+        APIキーはこのブラウザ内（localStorage）にのみ保存され、サーバーには保存されません。<br>
+        APIキーを設定しなくても、出題と正誤判定（〇×）自体は利用できます。
+      </p>
+    </div>
+
+    <div class="actions">
+      <a class="btn" href="{{ url_for('practice') }}">練習を始める</a>
+      <a class="btn secondary" href="{{ url_for('setup') }}">はじめての人はこちら（APIキー設定）</a>
+    </div>
+  </div>
+</body>
+</html>

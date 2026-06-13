@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>練習 - study-sql</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>SQL練習</h1>
+    <p id="no-key-notice" class="notice hidden">
+      Gemini APIキーが未設定です。出題と正誤判定（〇×）は利用できますが、不正解時のAIヒントは表示されません。
+      <a href="{{ url_for('setup') }}">設定する</a>
+    </p>
+
+    <div class="card">
+      <label>難易度</label>
+      <div class="difficulty">
+        <label><input type="radio" name="difficulty" value="easy" checked> easy</label>
+        <label><input type="radio" name="difficulty" value="medium"> medium</label>
+        <label><input type="radio" name="difficulty" value="hard"> hard</label>
+        <label><input type="radio" name="difficulty" value="very-hard"> very-hard</label>
+      </div>
+      <div class="actions">
+        <button class="btn" id="fetch-btn">問題を取得</button>
+      </div>
+    </div>
+
+    <div id="question-area" class="card hidden">
+      <p class="meta" id="question-meta"></p>
+      <div class="question-box" id="question-text"></div>
+
+      <div id="previews"></div>
+
+      <label for="sql-input">回答SQL</label>
+      <textarea id="sql-input" rows="4" placeholder="SELECT ..."></textarea>
+
+      <div class="actions">
+        <button class="btn" id="check-btn">回答する</button>
+      </div>
+
+      <div id="result-area" class="hidden">
+        <h2 id="result-title"></h2>
+        <p class="meta" id="result-meta"></p>
+        <div class="table-scroll" id="result-table"></div>
+        <div id="feedback" class="feedback hidden"></div>
+      </div>
+    </div>
+    <p>
+      <a class="meta" href="{{ url_for('index') }}"> トップへ戻る</a>
+    </p>
+  </div>
+  <script src="{{ url_for('static', filename='main.js') }}"></script>
+</body>
+</html>

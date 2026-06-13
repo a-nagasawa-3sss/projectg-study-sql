@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>初期設定 - study-sql</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <div class="container">
+    <h1>初期設定</h1>
+    <p>
+      不正解時にAI（Gemini）からヒントを受け取るためのAPIキーを設定します。<br>
+      APIキーはこのブラウザの localStorage に保存され、サーバーには送信・保存されません
+      （回答チェック時にのみ、お使いのPC上のサーバーからGemini APIへ直接送信されます）。
+    </p>
+
+    <div class="card">
+      <h2>1. Gemini APIキーを取得する</h2>
+      <p>
+        <a href="https://aistudio.google.com/apikey" target="_blank" rel="noopener">Google AI Studio</a>
+        にGoogleアカウントでログインし、「APIキーを作成」（環境によっては「Create API key」）をクリックしてください（無料枠があります）。
+      </p>
+      <p>
+        プロジェクトの選択を求められた場合は、既存のプロジェクトまたは「新しいプロジェクトを作成」のまま進めてください。<br>
+        作成後に表示されるAPIキー（<code>AIzaSy...</code>で始まる文字列）の横にあるコピーアイコンをクリックし、コピーします。
+      </p>
+
+      <h2>2. APIキーを登録する</h2>
+      <label for="api-key">Gemini APIキー</label>
+      <input type="password" id="api-key" placeholder="AIzaSy...">
+      <p class="meta">
+        AIヒントには gemini-2.5-flash-lite（無料枠の範囲内で利用できる、最も料金が発生しにくいモデル）を使用します。
+      </p>
+
+      <div class="actions">
+        <button class="btn" id="save-btn">保存する</button>
+        <button class="btn secondary" id="clear-btn">削除する</button>
+      </div>
+      <p id="status" class="notice hidden"></p>
+    </div>
+
+    <div class="actions">
+      <a class="btn secondary" href="{{ url_for('index') }}">トップへ戻る</a>
+      <a class="btn" href="{{ url_for('practice') }}">練習を始める</a>
+    </div>
+  </div>
+
+  <script>
+    const apiKeyInput = document.getElementById("api-key");
+    const status = document.getElementById("status");
+
+    const savedKey = localStorage.getItem("gemini_api_key");
+    if (savedKey) apiKeyInput.value = savedKey;
+
+    function showStatus(message) {
+      status.textContent = message;
+      status.classList.remove("hidden");
+    }
+
+    document.getElementById("save-btn").addEventListener("click", () => {
+      const key = apiKeyInput.value.trim();
+      if (!key) {
+        showStatus("APIキーを入力してください。");
+        return;
+      }
+      localStorage.setItem("gemini_api_key", key);
+      showStatus("保存しました。「練習を始める」から問題に進めます。");
+    });
+
+    document.getElementById("clear-btn").addEventListener("click", () => {
+      localStorage.removeItem("gemini_api_key");
+      apiKeyInput.value = "";
+      showStatus("削除しました。AIヒントは利用できなくなります。");
+    });
+  </script>
+</body>
+</html>

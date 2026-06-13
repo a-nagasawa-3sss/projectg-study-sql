@@ -1,0 +1,184 @@
+:root {
+  color-scheme: light;
+  --fg: #1f2933;
+  --muted: #5b6b7c;
+  --border: #d6dde3;
+  --bg-soft: #f5f7f9;
+  --accent: #2563eb;
+  --ok: #16a34a;
+  --ng: #dc2626;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", "Hiragino Sans", "Noto Sans JP", sans-serif;
+  color: var(--fg);
+  background: #ffffff;
+  margin: 0;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 32px 20px 64px;
+}
+
+h1 {
+  font-size: 1.6rem;
+  margin-bottom: 0.5rem;
+}
+
+h2 {
+  font-size: 1.2rem;
+  margin-top: 2rem;
+}
+
+p {
+  color: var(--muted);
+}
+
+a {
+  color: var(--accent);
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 16px;
+  background: var(--bg-soft);
+}
+
+.actions {
+  margin-top: 24px;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.btn.secondary {
+  background: #fff;
+  color: var(--accent);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-top: 16px;
+  margin-bottom: 4px;
+}
+
+input[type="text"],
+input[type="password"],
+select,
+textarea {
+  width: 100%;
+  padding: 8px 10px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-family: inherit;
+}
+
+textarea {
+  font-family: "Consolas", "SF Mono", monospace;
+  resize: vertical;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 8px;
+  font-size: 0.9rem;
+}
+
+th, td {
+  border: 1px solid var(--border);
+  padding: 4px 8px;
+  text-align: left;
+  white-space: nowrap;
+}
+
+th {
+  background: #eef2f6;
+}
+
+.table-scroll {
+  overflow-x: auto;
+}
+
+.difficulty {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+}
+
+.difficulty label {
+  font-weight: normal;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.question-box {
+  font-size: 1.05rem;
+  white-space: pre-wrap;
+}
+
+.result-correct {
+  color: var(--ok);
+  font-weight: 700;
+}
+
+.result-incorrect {
+  color: var(--ng);
+  font-weight: 700;
+}
+
+.feedback {
+  margin-top: 12px;
+  padding: 12px;
+  border-left: 4px solid var(--accent);
+  background: #fff;
+  white-space: pre-wrap;
+}
+
+.notice {
+  margin-top: 12px;
+  padding: 10px 12px;
+  border-radius: 6px;
+  background: #fff7e6;
+  border: 1px solid #ffd591;
+  font-size: 0.9rem;
+}
+
+.meta {
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.hidden {
+  display: none;
+}
