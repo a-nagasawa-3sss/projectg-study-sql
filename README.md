@@ -5,10 +5,13 @@ SQL練習問題集です。各自のPC上でローカル実行します。サー
 ## セットアップ
 
 ```bash
-# 1. 仮想環境の作成（study-sqlディレクトリ直下、初回のみ）
+# 1. プロジェクトルートへ移動
+cd .\study-sql\
+
+# 2. 仮想環境の作成（study-sqlディレクトリ直下、初回のみ）
 python -m venv .venv
 
-# 2. 仮想環境の有効化
+# 3. 仮想環境の有効化
 # Windows (PowerShell)
 .venv\Scripts\Activate.ps1
 # Windows (コマンドプロンプト)
@@ -16,10 +19,10 @@ python -m venv .venv
 # macOS/Linux
 source .venv/bin/activate
 
-# 3. 依存パッケージのインストール
+# 4. 依存パッケージのインストール
 pip install -r requirements.txt
 
-# 4. 練習用データベースの作成（初回のみ）
+# 5. 練習用データベースの作成（初回のみ）
 python app/db/build_db.py
 ```
 
